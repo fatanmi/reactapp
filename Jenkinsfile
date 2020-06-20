@@ -18,7 +18,7 @@ pipeline {
       steps{
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: registryCredential, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
          sh ''' docker login -u $USERNAME -p $PASSWORD
-                docker push registry:$BUILD_NUMBER
+                docker push $registry:$BUILD_NUMBER
 
          '''
         }
