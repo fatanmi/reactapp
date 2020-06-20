@@ -1,15 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
-      steps {
-        sh '''
-            docker build -t myfirstbuld .
-            docker images
+    // stage('Build') {
+    //   steps {
+    //     sh '''
+    //         docker build -t myfirstbuld .
+    //         docker images
             
-            '''
-      }
-    }
+    //         '''
+    //   }
+    // }
     stage('Push to docker hub'){
       steps{
         withCredentials([string(
@@ -18,7 +18,7 @@ pipeline {
             usernameVariable: 'registryUsername')])
             {
               sh 'docker login -u ${registryUsername} -p ${registryPassword}'
-              echo 'success'
+              echo ''
             }
       }
     }
