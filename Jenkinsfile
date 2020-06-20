@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh '''
-            docker build -t haryorbami/react:$BUILD_NUMBER
+            docker build -t haryorbami/react:$BUILD_NUMBER .
         '''
             
            
@@ -16,7 +16,7 @@ pipeline {
       
       sh '''
           docker login -u $USERNAME -p $PASSWORD
-          docker.push haryorbami/react:$BUILD_NUMBER
+          docker push haryorbami/react:$BUILD_NUMBER
         '''
         }
       }  
