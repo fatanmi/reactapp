@@ -1,26 +1,20 @@
 pipeline {
-  environment {
-    registry="haryorbami/docker-test"
-    registryCredential='dockerhub'
-  }
   agent any
   stages {
     stage('Build') {
       steps {
         script{
-            docker.build registry + "$BUILD_NUMBER"
+            docker build -t haryorbami/react:$BUILD_NUMBER
         }
             
            
       }
     }
     stage('Push to Docker hub'){
+        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "dockerhub", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
       steps{
-        script{
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: registryCredential, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
           docker login -u $USERNAME -p $PASSWORD
-                docker.push registry + "$BUILD_NUMBER"
-
+          docker.push haryorbami/react:$BUILD_NUMBER
         }
         }
            
