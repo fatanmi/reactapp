@@ -16,8 +16,8 @@ pipeline {
     }
     stage('Push to Docker hub'){
       steps{
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: registryCredential, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
         script{
+        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: registryCredential, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
           docker login -u $USERNAME -p $PASSWORD
                 docker.push registry + "$BUILD_NUMBER"
 
