@@ -12,12 +12,11 @@ pipeline {
     // }
     stage('Push to docker hub'){
       steps{
-        withCredentials([string(credentialsId: 'dockerhub', usernameVariable: 'USERNAME',
-            passwordVariable: 'PASSWORD')])
-            {
-              sh 'docker login -u $USERNAME -p $PASSWORD'
-              echo ''
-            }
+        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+         sh 'docker login -u $USERNAME -p $PASSWORD'
+         echo 'Success'
+        }
+           
       }
     }
 
