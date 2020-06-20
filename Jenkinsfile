@@ -5,15 +5,15 @@ pipeline {
   }
   agent any
   stages {
-    stage('Build') {
-      // steps {
-      //   sh '''
-      //       docker build -t myreactimage .
+    // stage('Build') {
+    //   // steps {
+    //   //   sh '''
+    //   //       docker build -t myreactimage .
             
             
-      //       '''
-      // }
-    }
+    //   //       '''
+    //   // }
+    // }
     stage('Login to Docker hub'){
       steps{
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: registryCredential, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
