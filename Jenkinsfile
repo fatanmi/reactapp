@@ -1,4 +1,8 @@
 pipeline {
+  environment {
+    registry = "haryorbami/react"
+    registryCredential = 'dockerhub'
+}
   agent any
   stages {
     stage('Build') {
@@ -19,8 +23,14 @@ pipeline {
           docker push haryorbami/react:$BUILD_NUMBER
         '''
         }
-      }  
+      }
+
+    stage('Remove Unused docker image') {
+      steps{
+         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
+  } 
+}
+}
 
-  }
