@@ -6,13 +6,13 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      steps {
-        sh '''
-            docker build -t myreactImage .
+      // steps {
+      //   sh '''
+      //       docker build -t myreactimage .
             
             
-            '''
-      }
+      //       '''
+      // }
     }
     stage('Login to Docker hub'){
       steps{
