@@ -3,9 +3,9 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        script{
+        sh '''
             docker build -t haryorbami/react:$BUILD_NUMBER
-        }
+        '''
             
            
       }
