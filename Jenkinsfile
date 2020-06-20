@@ -1,14 +1,14 @@
 pipeline {
   environment {
-    registry = "haryorbami/docker-test"
-    registryCredential = 'dockerhub'
+    registry="haryorbami/docker-test"
+    registryCredential='dockerhub'
   }
   agent any
   stages {
     stage('Build') {
       steps {
         script{
-            docker build -t $registry:$BUILD_NUMBER .
+            docker build -t registry:$BUILD_NUMBER .
         }
             
            
