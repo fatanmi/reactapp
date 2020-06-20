@@ -3,11 +3,11 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''ls
-docker ps
-
-docker build -t myfirstbuld .
-docker images'''
+        sh '''
+            docker build -t myfirstbuld .
+            docker images
+            
+            '''
       }
     }
 
