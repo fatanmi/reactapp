@@ -9,6 +9,8 @@ pipeline {
       steps {
         sh '''
             docker build -t haryorbami/react:$BUILD_NUMBER .
+            
+            docker tag haryorbami/react:$BUILD_NUMBER haryorbami/react:latest
         '''     
       }
     }
