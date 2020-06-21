@@ -10,9 +10,8 @@ pipeline {
     stage('Build') {
       steps {
         sh '''
-            docker build -t haryorbami/react:$BUILD_NUMBER -f Dockerfile.dev .
-           
-                       
+           docker build -t haryorbami/react:$BUILD_NUMBER .
+                                  
         '''     
       }
       
@@ -21,8 +20,8 @@ pipeline {
         steps {
           sh '''
 
-             docker build -f  haryorbami/react:$BUILD_NUMBER .
-             sh 'docker build -f  haryorbami/react:$BUILD_NUMBER -- --coverage .'
+             
+             docker build -t haryorbami/reacttest:$BUILD_NUMBER -f Dockerfile.dev .
             
             '''
         }
