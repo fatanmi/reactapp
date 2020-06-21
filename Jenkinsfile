@@ -20,6 +20,7 @@ pipeline {
       sh '''
           docker login -u $USERNAME -p $PASSWORD
           docker push haryorbami/react:$BUILD_NUMBER
+          docker run -p 3000:3000 --rm -d --name reactapp haryorbami/react
        
         '''
         }
