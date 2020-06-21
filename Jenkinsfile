@@ -10,19 +10,24 @@ pipeline {
     stage('Build') {
       steps {
         sh '''
-            docker build -t haryorbami/react:$BUILD_NUMBER .
-            
-            
+            docker build -t haryorbami/react:$BUILD_NUMBER -f Dockerfile.dev .
+           
+                       
         '''     
       }
       
     }
-    // stage('Test'){
-    //     steps {
-    //       sh 'docker build -f  haryorbami/react:$BUILD_NUMBER -- --coverage .'
-    //       sh 'docker build -f  haryorbami/react:$BUILD_NUMBER -- --coverage .'
-    //     }
-    //   }
+    stage('Test'){
+        steps {
+          sh '''
+          
+             docker run haryorbami/react:$BUILD_NUMBER npm run test -- --coverage
+             docker build -f  haryorbami/react:$BUILD_NUMBER .
+             sh 'docker build -f  haryorbami/react:$BUILD_NUMBER -- --coverage .'
+            
+            '''
+        }
+      }
     stage('Push to Docker hub') {
       steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
