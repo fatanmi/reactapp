@@ -20,8 +20,7 @@ pipeline {
     stage('Test'){
         steps {
           sh '''
-          
-             docker run haryorbami/react:$BUILD_NUMBER npm run test -- --coverage
+
              docker build -f  haryorbami/react:$BUILD_NUMBER .
              sh 'docker build -f  haryorbami/react:$BUILD_NUMBER -- --coverage .'
             
