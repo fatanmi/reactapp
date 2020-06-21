@@ -5,6 +5,12 @@ pipeline {
   }
   agent any
   stages {
+
+    stage('Test'){
+        steps {
+          sh 'docker build -t haryorbami/react -f Dockerfile.dev'
+        }
+      }
     stage('Build') {
       steps {
         sh '''
@@ -13,6 +19,7 @@ pipeline {
             docker tag haryorbami/react:$BUILD_NUMBER haryorbami/react:latest
         '''     
       }
+      
     }
     stage('Push to Docker hub') {
       steps {
