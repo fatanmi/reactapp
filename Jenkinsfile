@@ -8,7 +8,7 @@ pipeline {
 
     stage('Test'){
         steps {
-          sh 'set CI=true && docker build -f Dockerfile.dev .'
+          sh 'CI=true && docker build -f Dockerfile.dev .'
         }
       }
     stage('Build') {
