@@ -8,7 +8,7 @@ pipeline {
 
     stage('Test'){
         steps {
-          sh 'docker build -f Dockerfile.dev .'
+          sh 'docker build -f Dockerfile.dev -- -- coverage .'
         }
       }
     stage('Build') {
