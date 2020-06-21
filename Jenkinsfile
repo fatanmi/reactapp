@@ -17,11 +17,12 @@ pipeline {
       }
       
     }
-    stage('Test'){
-        steps {
-          sh 'docker build -f  haryorbami/react:$BUILD_NUMBER npm run test -- --coverage .'
-        }
-      }
+    // stage('Test'){
+    //     steps {
+    //       sh 'docker build -f  haryorbami/react:$BUILD_NUMBER -- --coverage .'
+    //       sh 'docker build -f  haryorbami/react:$BUILD_NUMBER -- --coverage .'
+    //     }
+    //   }
     stage('Push to Docker hub') {
       steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
