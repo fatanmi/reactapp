@@ -8,7 +8,7 @@ pipeline {
 
     stage('Test'){
         steps {
-          sh 'docker build -t haryorbami/react -f Dockerfile.dev'
+          sh 'docker build -t haryorbami/react:test$BUILD_NUMBER -f Dockerfile.dev'
         }
       }
     stage('Build') {
