@@ -10,7 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         sh '''
-            docker build -t haryorbami/react:$BUILD_NUMBER -f Dockerfile.dev .
+            docker build -t haryorbami/react:$BUILD_NUMBER .
             
             
         '''     
@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Test'){
         steps {
-          sh 'docker build -f Dockerfile.dev -- --coverage .'
+          sh 'docker build -f  haryorbami/react:$BUILD_NUMBER npm run test -- --coverage .'
         }
       }
     stage('Push to Docker hub') {
