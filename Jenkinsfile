@@ -5,8 +5,6 @@ pipeline {
   }
   agent any
   stages {
-
-    
     stage('Build') {
       steps {
         sh '''
@@ -37,23 +35,26 @@ pipeline {
        
         '''
         }
-      stage('Login to aws')
-        steps {
-          withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awscredentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-            
-          sh ' aws s3 ls'
-}
+ 
         }
 
       }
    
-  } 
-   stage('Remove Unused docker image') {
-      steps{
-         sh 'docker rmi $registry:$BUILD_NUMBER'
-         sh 'curl localhost:3000'
-      }
+  
+    stage('Login to aws'){
+        steps {
+          withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awscredentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+            
+          sh ' aws s3 ls'
+          }
+        }
+    }
+    stage('Remove Unused docker image') {
+        steps{
+          sh 'docker rmi $registry:$BUILD_NUMBER'
+          sh 'curl localhost:3000'
+        }
     }
 }
-}
+
 
