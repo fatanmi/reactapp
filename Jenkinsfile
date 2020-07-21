@@ -26,7 +26,7 @@ pipeline {
       }
     stage('Push to Docker hub') {
       steps {
-        withDockerRegistry(credentialsId: 'dockerhub') {
+        withDockerRegistry("",credentialsId: 'dockerhub') {
 
         //}
         //withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
