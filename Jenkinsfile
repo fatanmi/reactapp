@@ -26,7 +26,10 @@ pipeline {
       }
     stage('Push to Docker hub') {
       steps {
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+        withDockerRegistry(credentialsId: 'dockerhub') {
+
+        //}
+        //withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
       sh '''
           docker login -u $USERNAME -p $PASSWORD
           docker tag haryorbami/react:$BUILD_NUMBER haryorbami/react:latest
@@ -36,7 +39,7 @@ pipeline {
         '''
         }
  
-        }
+        //}
 
       }
     stage('Remove Unused docker image') {
@@ -59,8 +62,10 @@ pipeline {
               --node-type t2.micro \
               --nodes 3 \
               --nodes-min 1 \
-              --nodes-max 4 \
+              --nodes-max 3 \
               --managed
+sudo apt update && sudo apt install -y python3 && sudo apt install -y python3-pip && sudo pip3 install ansible && sudo pip3 install openshift
+
 
 
 
