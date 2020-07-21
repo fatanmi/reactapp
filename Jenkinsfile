@@ -19,7 +19,7 @@ pipeline {
           sh '''
 
              
-             docker build -t haryorbami/reacttest:$BUILD_NUMBER -f Dockerfile.dev .
+             docker build -t haryorbami/reacttest:$BUILD_NUMBER .
             
             '''
         }
@@ -31,7 +31,7 @@ pipeline {
           docker login -u $USERNAME -p $PASSWORD
           docker tag haryorbami/react:$BUILD_NUMBER haryorbami/react:latest
           docker push haryorbami/react:$BUILD_NUMBER
-          docker run -p 3000:3000 --rm -d --name reactapp$BUILD_NUMBER haryorbami/react
+          
        
         '''
         }
@@ -42,7 +42,7 @@ pipeline {
     stage('Remove Unused docker image') {
         steps{
           sh 'docker rmi $registry:$BUILD_NUMBER'
-          sh 'curl localhost:3000'
+          
         }
     }
   
