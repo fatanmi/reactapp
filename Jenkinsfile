@@ -49,9 +49,20 @@ pipeline {
     stage('Login to aws'){
         steps {
           withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awscredentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-            
+
           sh '''
-                  aws s3 ls
+              eksctl create cluster \
+              --name prod \
+              --version 1.17 \
+              --region us-west-2 \
+              --nodegroup-name standard-workers \
+              --node-type t2.micro \
+              --nodes 3 \
+              --nodes-min 1 \
+              --nodes-max 4 \
+                
+
+
              '''
 
           }
