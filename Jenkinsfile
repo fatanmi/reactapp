@@ -54,7 +54,7 @@ pipeline {
               eksctl create cluster \
               --name prod \
               --version 1.17 \
-              --region us-west-2 \
+              --region us-east-1 \
               --nodegroup-name standard-workers \
               --node-type t2.micro \
               --nodes 3 \
