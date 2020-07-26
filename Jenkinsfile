@@ -49,7 +49,7 @@ pipeline {
         }
     }
   
-    stage('Login to aws'){
+    stage('Create Cluster'){
         steps {
           withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awscredentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 
@@ -64,12 +64,15 @@ pipeline {
               --nodes-min 1 \
               --nodes-max 3 \
               --managed
-sudo apt update && sudo apt install -y python3 && sudo apt install -y python3-pip && sudo pip3 install ansible && sudo pip3 install openshift
-
-
-
 
              '''
+          sh '''
+
+              kubectl apply -f clientDeploy.yaml
+
+             '''
+
+
 
           }
         }
