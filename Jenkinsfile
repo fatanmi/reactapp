@@ -26,12 +26,11 @@ pipeline {
       }
     stage('Push to Docker hub') {
       steps {
-        withDockerRegistry([url: "",credentialsId: 'dockerhub']) {
+        withDockerRegistry([url: "", credentialsId: 'dockerhub']) {
 
         //}
         //withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
       sh '''
-          docker login -u $USERNAME -p $PASSWORD
           docker tag haryorbami/react:$BUILD_NUMBER haryorbami/react:latest
           docker push haryorbami/react:$BUILD_NUMBER
           
