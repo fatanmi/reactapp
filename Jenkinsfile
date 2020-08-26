@@ -4,6 +4,8 @@ pipeline {
     registryCredential = 'dockerhub'
   }
   agent any
+  
+
   stages {
     stage('Build') {
       steps {
@@ -18,8 +20,7 @@ pipeline {
         steps {
           sh '''
 
-             
-             docker build -t haryorbami/reacttest:$BUILD_NUMBER .
+            docker build -t haryorbami/reacttest:$BUILD_NUMBER .
             
             '''
         }
@@ -67,7 +68,8 @@ pipeline {
              '''
           sh '''
 
-              kubectl apply -f clientDeploy.yaml
+              kubectl apply -f clientdeploy.yaml
+              kubectl apply -f appserver.yaml
 
              '''
 
