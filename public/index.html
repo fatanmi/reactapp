@@ -4,6 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -16,6 +22,145 @@
     <title>React App</title>
   </head>
   <body>
+    <div class="container-fluid">
+      <!-- nav bar -->
+
+      <div>
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand" href="#">Puritan</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active"></li>
+            </ul>
+            
+          </div>
+        </nav>
+      </div>
+
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container head">
+          <h1 class="display-4">Puritan Movie Search App</h1>
+          <p class="lead">
+            PurMovs is the world's most popular and authoritative source for
+            movie, TV and celebrity content. Find ratings and reviews for the
+            newest movie and TV shows.
+          </p>
+        </div>
+      </div>
+      <section class="section text-center">
+        <div class="container mb-5">
+          <input
+            id="search-box"
+            type="text"
+            class="form-control mb-3"
+            placeholder="Search"
+          />
+          <button id="submit-btn" class="btn btn-primary">Search</button>
+        </div>
+      </section>
+      <!-- content -->
+      <div class="container">
+        <div class="row">
+          <div id="num1" class="col-sm-4 ">
+            <div class="card status">
+              <img
+                src="https://m.media-amazon.com/images/M/MV5BZmQ3MWEyNTYtOTY1OC00MTljLWI3OGUtMmU1ZDc2OTYxNDQ4L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_SX300.jpg"
+                class="card-img-top"
+                alt=""
+                style="overflow: hidden"
+              />
+
+              <div class="card-body ">
+                <h6 class="card-title">Title: <span>School of Rock</span></h6>
+                <div class="card-text">
+                  <label for=""></label>
+                  <label for=""
+                    ><strong> Year: </strong><span>2003</span></label
+                  >
+                  <label for=""
+                    ><strong> Genre: </strong
+                    ><span>Action, Adventure, Comedy</span></label
+                  >
+                </div>
+                <a href="#" class="btn btn-primary btn-block">More</a>
+              </div>
+            </div>
+            <br />
+          </div>
+          <div id="num2" class="col-sm-4">
+            <div class="card status">
+              <img
+                src="https://m.media-amazon.com/images/M/MV5BMTQyOTE0NjYxNV5BMl5BanBnXkFtZTgwMDA2Mzc2MDE@._V1_SX300.jpg"
+                class="card-img-top"
+                alt=""
+                style="overflow: hidden"
+              />
+              <div class="card-body">
+                <h6 class="card-title">
+                  Title: <span>Romy and Michele's High</span>
+                </h6>
+                <div class="card-text">
+                  <label for=""></label>
+                  <label for=""
+                    ><strong> Year: </strong><span>1997</span></label
+                  >
+                  <label for=""
+                    ><strong> Genre: </strong
+                    ><span>Adventure, Comedy</span></label
+                  >
+                </div>
+                <div class="text-center">
+                  <a href="#" class="btn btn-primary btn-block">More</a>
+
+                </div>
+              </div>
+            </div>
+            <br />
+          </div>
+          <div id="num3" class="col-sm-4">
+            <div class="card status">
+              <div style="">
+                <img
+                  src="https://m.media-amazon.com/images/M/MV5BMjExOTQ4MDMyMV5BMl5BanBnXkFtZTgwMTE3NDM2MzE@._V1_SX300.jpg"
+                  class="card-img-top"
+                  alt=""
+                />
+              </div>
+              <div class="card-body">
+                <h6 class="card-title">Title: <span>Home</span></h6>
+                <div class="card-text">
+                  <label for=""></label>
+                  <label for=""
+                    ><strong> Year: </strong><span>2017</span></label
+                  >
+                  <label for=""
+                    ><strong> Genre: </strong
+                    ><span>Action, Adventure, Comedy</span></label
+                  >
+                </div>
+                <a href="#" class="btn btn-primary btn-block">More</a>
+              </div>
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+      <!-- footer -->
+    </div>
+    <script src="js/app.js"></script>
+    
     <div id="root"></div>
     <!--
       This HTML file is a template.
