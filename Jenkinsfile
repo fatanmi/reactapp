@@ -7,10 +7,7 @@ pipeline {
   stages {
     stage('Lint file') {
       steps {
-        sh '''
-           make lint
-                                  
-        '''     
+        sh 'make lint'     
       }
     }
     stage('Build') {
