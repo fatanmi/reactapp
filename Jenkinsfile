@@ -22,10 +22,7 @@ pipeline {
       steps {
         withDockerRegistry([url: "", credentialsId: 'dockerhub']) {
         
-        sh 
-          '''
-            docker push haryorbami/react:$BUILD_NUMBER
-          '''
+        sh 'docker push haryorbami/react:$BUILD_NUMBER'
         }
         }
 
